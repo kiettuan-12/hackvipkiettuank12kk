@@ -65,7 +65,6 @@
             letter-spacing: 2px;
             text-shadow: 0 0 10px var(--accent-red);
             margin-bottom: 8px;
-            cursor: pointer;
         }
 
         .site-status {
@@ -237,6 +236,40 @@
             box-shadow: var(--glow-strong);
         }
 
+        /* KHỐI CỘNG ĐỒNG */
+        .social-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .social-item:hover {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: var(--accent-red);
+            box-shadow: var(--glow);
+        }
+
+        .social-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* BẢNG ADMIN & ĐĂNG NHẬP */
         .admin-panel {
             background: rgba(10, 0, 0, 0.9);
             border: 1px dashed var(--accent-red);
@@ -293,6 +326,21 @@
             margin-top: 5px;
         }
 
+        .btn-google {
+            background: #db4437;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
         .btn-logout {
             background: #333;
             color: #fff;
@@ -318,7 +366,14 @@
                 <span class="status-dot"></span>
                 <span id="site-header-status">Tuấn Kiệt Depzaii đang hoạt động</span>
             </div>
-            <button id="btn-logout-admin" class="btn-logout hidden" style="margin-top: 10px;">⚡ ĐĂNG XUẤT</button>
+            
+            <!-- NÚT ĐĂNG NHẬP / ĐĂNG XUẤT GOOGLE -->
+            <button id="btn-login-google" class="btn-google" onclick="loginWithGoogle()">
+                <i class="fab fa-google"></i> Đăng nhập Admin Google
+            </button>
+            <button id="btn-logout-google" class="btn-logout hidden" onclick="logoutGoogle()" style="margin-top: 10px;">
+                ⚡ ĐĂNG XUẤT (<span id="user-email-tag"></span>)
+            </button>
         </div>
 
         <!-- MAIN SCREEN -->
@@ -335,6 +390,27 @@
             <div class="detail-title" id="view-title">--</div>
             <div class="detail-desc" id="view-desc">--</div>
             <div class="links-zone" id="dl-buttons-zone"></div>
+        </div>
+
+        <!-- CỘNG ĐỒNG / SOCIAL LINKS -->
+        <div class="content-card">
+            <div class="section-title">🌐 CỘNG ĐỒNG</div>
+            <div class="social-list">
+                <a href="https://www.youtube.com/@maituankiet2k12" target="_blank" class="social-item">
+                    <div class="social-left">
+                        <span style="color: #ef4444; font-size: 16px;"><i class="fab fa-youtube"></i></span>
+                        <h4 style="font-size: 13px; font-weight: 600;">YouTube</h4>
+                    </div>
+                    <span style="color: #9ca3af; font-size: 12px;">→</span>
+                </a>
+                <a href="https://t.me/sharemenuhackffk12" target="_blank" class="social-item">
+                    <div class="social-left">
+                        <span style="color: #3b82f6; font-size: 16px;"><i class="fab fa-telegram-plane"></i></span>
+                        <h4 style="font-size: 13px; font-weight: 600;">Telegram</h4>
+                    </div>
+                    <span style="color: #9ca3af; font-size: 12px;">→</span>
+                </a>
+            </div>
         </div>
 
         <!-- ADMIN PANEL -->
@@ -382,13 +458,14 @@
         </div>
     </div>
 
-    <!-- FIREBASE LIBRARIES (Thư viện chuẩn v8) -->
+    <!-- FIREBASE LIBRARIES -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <script>
-        var DB_KEY = 'neon_v20_red_starry_safe';
-        var secretClicks = 0;
+        // EMAIL ADMIN DUY NHẤT ĐƯỢC QUYỀN CHỈNH SỬA
+        var ADMIN_EMAIL = "kiettuna26@gmail.com";
 
         var baseMods = [
             { name: "ĐỊNH VỊ FF OB 54", desc: "ALL ĐỊNH VỊ VIP.", links: [{title: "📥 TẢI XUỐNG FILE MOD", url: "https://www.mediafire.com"}] },
@@ -399,7 +476,6 @@
             { name: "ALL MENU", desc: "KLEL YUMI,VN CHEAT... ALL MENU", links: [{title: "📥 TẢI XUỐNG FILE MOD", url: "https://www.mediafire.com"}] }
         ];
 
-        // CẤU HÌNH FIREBASE THẬT CỦA BẠN
         var firebaseConfig = {
             apiKey: "AIzaSyBZdO6MEBogNXMBEGPjEMdpRV4sgfSzP-Y",
             authDomain: "hackmod-6d933.firebaseapp.com",
@@ -414,9 +490,55 @@
             firebase.initializeApp(firebaseConfig);
         }
         var database = firebase.database();
+        var auth = firebase.auth();
         var currentModsData = [];
+        var currentUser = null;
+
+        // XỬ LÝ ĐĂNG NHẬP GOOGLE
+        function loginWithGoogle() {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider).then(function(result) {
+                alert("Đăng nhập thành công: " + result.user.email);
+            }).catch(function(error) {
+                alert("Lỗi đăng nhập: " + error.message);
+            });
+        }
+
+        function logoutGoogle() {
+            auth.signOut().then(function() {
+                alert("Đã đăng xuất!");
+            });
+        }
+
+        // TỰ ĐỘNG THEO DÕI TRẠNG THÁI ĐĂNG NHẬP
+        auth.onAuthStateChanged(function(user) {
+            currentUser = user;
+            if (user) {
+                document.getElementById('btn-login-google').classList.add('hidden');
+                document.getElementById('btn-logout-google').classList.remove('hidden');
+                document.getElementById('user-email-tag').innerText = user.email;
+
+                // Kiểm tra xem có đúng Email kiettuna26@gmail.com không
+                if (user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+                    document.getElementById('admin-panel-zone').classList.remove('hidden');
+                    document.getElementById('inp-site-title').value = document.getElementById('site-header-title').innerText;
+                    document.getElementById('inp-site-status').value = document.getElementById('site-header-status').innerText;
+                } else {
+                    document.getElementById('admin-panel-zone').classList.add('hidden');
+                    alert("Tài khoản của bạn không có quyền Admin!");
+                }
+            } else {
+                document.getElementById('btn-login-google').classList.remove('hidden');
+                document.getElementById('btn-logout-google').classList.add('hidden');
+                document.getElementById('admin-panel-zone').classList.add('hidden');
+                document.getElementById('admin-edit-mod-section').classList.add('hidden');
+            }
+        });
 
         function saveData(d) {
+            if(!currentUser || currentUser.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()){
+                return alert("Bạn không có quyền chỉnh sửa!");
+            }
             database.ref('mods').set(d);
         }
 
@@ -493,8 +615,7 @@
             document.getElementById('add-name').value = "";
             document.getElementById('add-link').value = "";
 
-            var isAdmin = localStorage.getItem('is_admin_active');
-            if (isAdmin === 'true') {
+            if (currentUser && currentUser.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
                 document.getElementById('admin-edit-mod-section').classList.remove('hidden');
                 document.getElementById('admin-mod-id-label').innerText = idx + 1;
             }
@@ -505,41 +626,6 @@
             document.getElementById('screen-main').classList.remove('hidden');
             document.getElementById('admin-edit-mod-section').classList.add('hidden');
         }
-
-        document.getElementById('site-header-title').onclick = function() {
-            secretClicks++;
-            if (secretClicks >= 5) {
-                secretClicks = 0;
-                var pass = prompt("NHẬP MẬT KHẨU ADMIN:");
-                if (pass === "123") {
-                    localStorage.setItem('is_admin_active', 'true');
-                    alert("ĐÃ BẬT QUYỀN ADMIN!");
-                    evalAdminPanel();
-                } else {
-                    alert("SAI MẬT KHẨU!");
-                }
-            }
-        };
-
-        function evalAdminPanel() {
-            var isAdmin = localStorage.getItem('is_admin_active');
-            if (isAdmin === 'true') {
-                document.getElementById('admin-panel-zone').classList.remove('hidden');
-                document.getElementById('btn-logout-admin').classList.remove('hidden');
-                document.getElementById('inp-site-title').value = document.getElementById('site-header-title').innerText;
-                document.getElementById('inp-site-status').value = document.getElementById('site-header-status').innerText;
-            } else {
-                document.getElementById('admin-panel-zone').classList.add('hidden');
-                document.getElementById('btn-logout-admin').classList.add('hidden');
-            }
-        }
-
-        document.getElementById('btn-logout-admin').onclick = function() {
-            localStorage.removeItem('is_admin_active');
-            alert("ĐÃ ĐĂNG XUẤT ADMIN!");
-            evalAdminPanel();
-            document.getElementById('admin-edit-mod-section').classList.add('hidden');
-        };
 
         function saveSiteInfo() {
             var t = document.getElementById('inp-site-title').value.trim();
@@ -586,14 +672,10 @@
             }
         }
 
-     window.onload = function() {
-            evalAdminPanel();
-            
-            // 1. Hiện ngay danh sách mặc định (không lo bị trống web)
+        window.onload = function() {
             currentModsData = baseMods;
             refreshMainScreenTexts();
 
-            // 2. Tải dữ liệu Realtime từ Firebase
             database.ref('mods').on('value', function(snapshot) {
                 var data = snapshot.val();
                 if (data && data.length > 0) {
@@ -607,21 +689,6 @@
                 refreshMainScreenTexts();
             });
         };
-        <!-- CỘNG ĐỒNG / MẠNG XÃ HỘI -->
-<div class="community-box">
-    <h3 class="community-title">🌐 KÊNH CỘNG ĐỒNG 🌐</h3>
-    <div class="social-links">
-        <a href="LINK_TELEGRAM_CỦA_BẠN" target="_blank" class="btn-social tele">
-            <i class="fab fa-telegram-plane"></i> Telegram
-        </a>
-        <a href="LINK_YOUTUBE_CỦA_BẠN" target="_blank" class="btn-social yt">
-            <i class="fab fa-youtube"></i> YouTube
-        </a>
-        <a href="LINK_TIKTOK_CỦA_BẠN" target="_blank" class="btn-social tiktok">
-            <i class="fab fa-tiktok"></i> TikTok
-        </a>
-    </div>
-</div>
     </script>
 </body>
 </html>
