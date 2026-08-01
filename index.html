@@ -351,6 +351,34 @@
             cursor: pointer;
         }
 
+        /* CSS MỚI CHO TÍNH NĂNG XÓA LINK */
+        .admin-link-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #444;
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .btn-delete-link {
+            background: #cc0000;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .btn-delete-link:hover {
+            background: #ff0000;
+        }
+
         .hidden {
             display: none !important;
         }
@@ -442,9 +470,15 @@
                     <label>Mô tả Mod:</label>
                     <input type="text" id="inp-mod-desc" class="form-input">
                 </div>
-                <button class="btn-save" onclick="saveGeneralData()" style="margin-bottom: 10px;">LƯU TÊN & MÔ TẢ</button>
+                <button class="btn-save" onclick="saveGeneralData()" style="margin-bottom: 15px;">LƯU TÊN & MÔ TẢ</button>
 
-                <div style="color: #aaa; font-size: 11px; margin-top: 10px;">Thêm/Sửa Link Tải:</div>
+                <!-- KHỐI QUẢN LÝ / XÓA LINK TẢI HIỆN CÓ -->
+                <div style="color: #aaa; font-size: 11px; margin-bottom: 6px;">Danh sách Link tải hiện có (Bấm nút XÓA để gỡ):</div>
+                <div id="admin-links-manage-zone"></div>
+
+                <hr style="border-color: #333; margin: 15px 0;">
+
+                <div style="color: #aaa; font-size: 11px;">Thêm Link Tải Mới:</div>
                 <div class="form-group">
                     <label>Tên nút bấm:</label>
                     <input type="text" id="add-name" class="form-input" placeholder="Ví dụ: 📥 TẢI FILE VIP">
@@ -518,7 +552,6 @@
                 document.getElementById('btn-logout-google').classList.remove('hidden');
                 document.getElementById('user-email-tag').innerText = user.email;
 
-                // Kiểm tra xem có đúng Email kiettuna26@gmail.com không
                 if (user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
                     document.getElementById('admin-panel-zone').classList.remove('hidden');
                     document.getElementById('inp-site-title').value = document.getElementById('site-header-title').innerText;
@@ -590,6 +623,24 @@
             }
         }
 
+        function renderAdminLinkList(item) {
+            var manageZone = document.getElementById('admin-links-manage-zone');
+            manageZone.innerHTML = "";
+
+            if (item.links && item.links.length > 0) {
+                for (var l = 0; l < item.links.length; l++) {
+                    var linkObj = item.links[l];
+                    manageZone.innerHTML += 
+                        '<div class="admin-link-item">' +
+                        '  <span>' + linkObj.title + '</span>' +
+                        '  <button class="btn-delete-link" onclick="deleteLink(' + l + ')">🗑️ XÓA</button>' +
+                        '</div>';
+                }
+            } else {
+                manageZone.innerHTML = '<div style="color: #666; font-size: 11px;">Chưa có link nào.</div>';
+            }
+        }
+
         function goDetail(idx) {
             var data = loadData();
             var item = data[idx];
@@ -618,6 +669,7 @@
             if (currentUser && currentUser.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
                 document.getElementById('admin-edit-mod-section').classList.remove('hidden');
                 document.getElementById('admin-mod-id-label').innerText = idx + 1;
+                renderAdminLinkList(item);
             }
         }
 
@@ -653,6 +705,21 @@
                 saveData(data);
                 alert("Đã thêm link thành công!");
                 goDetail(idx);
+            }
+        }
+
+        // HÀM XÓA LINK TẢI
+        function deleteLink(linkIndex) {
+            var idx = parseInt(document.getElementById('current-mod-idx').value);
+            var data = loadData();
+
+            if (data[idx] && data[idx].links) {
+                if (confirm("Bạn có chắc chắn muốn xóa nút link này không?")) {
+                    data[idx].links.splice(linkIndex, 1); // Xóa link khỏi mảng
+                    saveData(data);
+                    alert("Đã xóa nút link!");
+                    goDetail(idx); // Tải lại thông tin nút
+                }
             }
         }
 
