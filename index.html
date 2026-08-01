@@ -586,15 +586,24 @@
             }
         }
 
-        window.onload = function() {
+     window.onload = function() {
             evalAdminPanel();
+            
+            // 1. Hiện ngay danh sách mặc định (không lo bị trống web)
+            currentModsData = baseMods;
+            refreshMainScreenTexts();
+
+            // 2. Tải dữ liệu Realtime từ Firebase
             database.ref('mods').on('value', function(snapshot) {
                 var data = snapshot.val();
-                if (data) {
+                if (data && data.length > 0) {
                     currentModsData = data;
                 } else {
                     currentModsData = baseMods;
                 }
+                refreshMainScreenTexts();
+            }, function(error) {
+                currentModsData = baseMods;
                 refreshMainScreenTexts();
             });
         };
