@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡HACK•MOD•TEAM⚡</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0b0202;
+            --card-bg: rgba(20, 5, 5, 0.75);
+            --border-color: #ff1a1a;
+            --text-main: #ffffff;
+            --text-sub: #ffb3b3;
+            --accent-red: #ff0000;
+            --glow: 0 0 15px rgba(255, 0, 0, 0.6);
+            --glow-strong: 0 0 25px rgba(255, 0, 0, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px 10px;
+            background-image: 
+                radial-gradient(circle at 50% 10%, rgba(120, 0, 0, 0.25), transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(80, 0, 0, 0.2), transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .header-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--glow);
+            backdrop-filter: blur(8px);
+            position: relative;
+        }
+
+        .site-title {
+            color: var(--accent-red);
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--accent-red);
+            margin-bottom: 8px;
+        }
+
+        .site-status {
+            font-size: 13px;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-red);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-red);
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: var(--glow);
+            backdrop-filter: blur(8px);
+        }
+
+        .section-title {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .mod-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mod-item {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .mod-item:hover {
+            border-color: var(--border-color);
+            box-shadow: var(--glow);
+        }
+
+        .mod-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .mod-icon {
+            color: var(--accent-red);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .mod-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mod-name {
+            font-weight: 800;
+            font-size: 14px;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255,255,255,0.3);
+        }
+
+        .mod-desc {
+            font-size: 11px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .btn-view, .btn-dl {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-view:hover, .btn-dl:hover {
+            background: var(--accent-red);
+            box-shadow: var(--glow-strong);
+        }
+
+        .btn-back {
+            background: transparent;
+            border: 1px solid #555;
+            color: #aaa;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-back:hover {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .social-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 0, 0, 0.25);
+            border-radius: 8px;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.2s;
+        }
+
+        .social-item:hover {
+            border-color: var(--accent-red);
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: var(--glow);
+        }
+
+        .social-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .search-input {
+            flex: 1;
+            background: #000;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn-search {
+            background: var(--accent-red);
+            color: #fff;
+            border: none;
+            padding: 0 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: var(--glow);
+        }
+
+        .loading-zone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 10px;
+            gap: 15px;
+        }
+
+        .spinner-circle {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 0, 0, 0.2);
+            border-top: 4px solid var(--accent-red);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            box-shadow: var(--glow);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .progress-container {
+            width: 100%;
+            background: #111;
+            border: 1px solid #444;
+            height: 20px;
+            border-radius: 10px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #800000, #ff0000);
+            border-radius: 10px;
+            transition: width 0.4s ease-in-out;
+            position: relative;
+        }
+
+        .itachi-crow {
+            position: absolute;
+            right: -14px;
+            top: -12px;
+            font-size: 22px;
+            color: #ff0000;
+            filter: drop-shadow(0 0 6px #ff0000);
+            animation: crowFly 0.5s infinite alternate;
+        }
+
+        @keyframes crowFly {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-4px) scale(1.1); }
+        }
+
+        .progress-text {
+            font-size: 12px;
+            color: var(--accent-red);
+            font-weight: bold;
+            text-shadow: 0 0 5px var(--accent-red);
+        }
+
+        .video-card {
+            background: rgba(15, 0, 0, 0.85);
+            border: 2px solid var(--accent-red);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            margin-top: 15px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+        }
+
+        .video-thumb-container {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid var(--accent-red);
+        }
+
+        .video-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .video-code-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid var(--accent-red);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .video-content {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+            text-shadow: 0 0 8px rgba(255,0,0,0.8);
+        }
+
+        .video-desc {
+            font-size: 12px;
+            color: #ccc;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .btn-play-video {
+            display: block;
+            background: linear-gradient(45deg, #cc0000, #ff0000);
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 13px;
+            box-shadow: var(--glow);
+            transition: 0.2s;
+        }
+
+        .btn-play-video:hover {
+            background: linear-gradient(45deg, #ff0000, #ff3333);
+            box-shadow: var(--glow-strong);
+        }
+
+        .admin-panel {
+            background: rgba(10, 0, 0, 0.9);
+            border: 1px dashed var(--accent-red);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .admin-title {
+            color: var(--accent-red);
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        .form-input {
+            background: #000;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-red);
+            outline: none;
+        }
+
+        .btn-save {
+            background: var(--accent-red);
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .btn-google {
+            background: #db4437;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .btn-logout {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .admin-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #444;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .btn-action-small {
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+            margin-left: 4px;
+        }
+
+        .btn-edit { background: #e67e22; }
+        .btn-delete { background: #cc0000; }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header-card">
+            <div class="site-title" id="site-header-title">⚡HACK•MOD•TEAM⚡</div>
+            <div class="site-status">
+                <span class="status-dot"></span>
+                <span id="site-header-status">Tuấn Kiệt Depzaii đang hoạt động</span>
+            </div>
+            
+            <button id="btn-login-google" class="btn-google" onclick="loginWithGoogle()">
+                <i class="fab fa-google"></i> Đăng nhập Admin Google
+            </button>
+            <button id="btn-logout-google" class="btn-logout hidden" onclick="logoutGoogle()" style="margin-top: 10px;">
+                ⚡ ĐĂNG XUẤT (<span id="user-email-tag"></span>)
+            </button>
+        </div>
+
+        <!-- MAIN SCREEN -->
+        <div id="screen-main" class="content-card">
+            <div class="section-title">
+                <i class="fa-solid fa-box"></i> DANH SÁCH BẢN MOD
+            </div>
+            <div class="mod-list" id="mod-list-zone"></div>
+        </div>
+
+        <!-- SCREEN MOD DETAIL -->
+        <div id="screen-detail" class="content-card hidden">
+            <button class="btn-back" onclick="goMain()"><i class="fa-solid fa-arrow-left"></i> QUAY LẠI</button>
+            <div class="detail-title" id="view-title" style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px;">--</div>
+            <div class="detail-desc" id="view-desc" style="font-size: 13px; color: #aaa; margin-bottom: 15px;">--</div>
+            <div class="links-zone" id="dl-buttons-zone" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        </div>
+
+        <!-- SCREEN VIDEO TEST -->
+        <div id="screen-video-test" class="content-card hidden">
+            <button class="btn-back" onclick="goMain()"><i class="fa-solid fa-arrow-left"></i> QUAY LẠI</button>
+            <div class="section-title"><i class="fa-solid fa-circle-play"></i> TÌM VIDEO TEST & HƯỚNG DẪN</div>
+            
+            <div class="search-box">
+                <input type="text" id="inp-search-code" class="search-input" placeholder="Nhập mã tìm kiếm (VD: 001)...">
+                <button class="btn-search" onclick="startSearchVideo()"><i class="fa-solid fa-magnifying-glass"></i> TÌM</button>
+            </div>
+
+            <div id="loading-zone" class="loading-zone hidden">
+                <div class="spinner-circle"></div>
+                <div class="progress-container">
+                    <div id="progress-bar" class="progress-bar">
+                        <i class="fa-solid fa-crow itachi-crow"></i>
+                    </div>
+                </div>
+                <div id="progress-text" class="progress-text">Đang triệu hồi Genjutsu... 0%</div>
+            </div>
+
+            <div id="video-result-zone"></div>
+        </div>
+
+        <!-- CỘNG ĐỒNG -->
+        <div class="content-card">
+            <div class="section-title"><i class="fa-solid fa-globe"></i> CỘNG ĐỒNG</div>
+            <div class="social-list">
+                <a href="https://www.youtube.com/@maituankiet2k12" target="_blank" class="social-item">
+                    <div class="social-left">
+                        <span style="color: #ff0000; font-size: 18px;"><i class="fab fa-youtube"></i></span>
+                        <h4 style="font-size: 13px; font-weight: 600;">YouTube</h4>
+                    </div>
+                    <span style="color: #888; font-size: 12px;">→</span>
+                </a>
+                <a href="https://t.me/sharemenuhackffk12" target="_blank" class="social-item">
+                    <div class="social-left">
+                        <span style="color: #0088cc; font-size: 18px;"><i class="fab fa-telegram-plane"></i></span>
+                        <h4 style="font-size: 13px; font-weight: 600;">Telegram</h4>
+                    </div>
+                    <span style="color: #888; font-size: 12px;">→</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ADMIN PANEL -->
+        <div id="admin-panel-zone" class="admin-panel hidden">
+            <div class="admin-title">
+                <span>⚙️ QUẢN TRỊ VIÊN</span>
+            </div>
+
+            <!-- QUẢN LÝ TIÊU ĐỀ -->
+            <div class="form-group">
+                <label>Tiêu đề Trang Web:</label>
+                <input type="text" id="inp-site-title" class="form-input" placeholder="Nhập tiêu đề...">
+            </div>
+            <div class="form-group">
+                <label>Trạng thái Subtitle:</label>
+                <input type="text" id="inp-site-status" class="form-input" placeholder="Nhập trạng thái...">
+            </div>
+            <button class="btn-save" onclick="saveSiteInfo()">LƯU THÔNG TIN TRANG</button>
+
+            <hr style="border-color: #333; margin: 15px 0;">
+
+            <!-- QUẢN LÝ BẢN MOD & LINK TẢI -->
+            <div style="color: var(--accent-red); font-size: 13px; font-weight: bold; margin-bottom: 10px;">
+                📦 QUẢN LÝ BẢN MOD & LINK TẢI
+            </div>
+            <input type="hidden" id="admin-mod-index" value="-1">
+            <div class="form-group">
+                <label>Tên bản Mod:</label>
+                <input type="text" id="admin-mod-name" class="form-input" placeholder="VD: ĐỊNH VỊ FF OB 54">
+            </div>
+            <div class="form-group">
+                <label>Mô tả bản Mod:</label>
+                <input type="text" id="admin-mod-desc" class="form-input" placeholder="VD: ALL ĐỊNH VỊ VIP">
+            </div>
+            <div class="form-group">
+                <label>Tiêu đề Nút Tải Down:</label>
+                <input type="text" id="admin-mod-btn-title" class="form-input" placeholder="📥 TẢI XUỐNG FILE MOD" value="📥 TẢI XUỐNG FILE MOD">
+            </div>
+            <div class="form-group">
+                <label>Đường Link Tải (Mediafire, Drive...):</label>
+                <input type="text" id="admin-mod-link-url" class="form-input" placeholder="https://www.mediafire.com/file/...">
+            </div>
+            <button class="btn-save" onclick="saveModData()" id="btn-save-mod">THÊM / CẬP NHẬT BẢN MOD</button>
+            <button class="btn-save" onclick="resetModForm()" style="background:#555; margin-top:5px;">HỦY SỬA (LÀM MỚI FORM)</button>
+
+            <div style="color: #aaa; font-size: 11px; margin: 10px 0 5px 0;">Danh sách Bản Mod hiện tại:</div>
+            <div id="admin-mods-list-zone"></div>
+
+            <hr style="border-color: #333; margin: 15px 0;">
+
+            <!-- QUẢN LÝ VIDEO TEST -->
+            <div style="color: var(--accent-red); font-size: 13px; font-weight: bold; margin-bottom: 10px;">
+                🎬 QUẢN LÝ VIDEO TEST & HƯỚNG DẪN
+            </div>
+            <div class="form-group">
+                <label>Mã Video (VD: 001):</label>
+                <input type="text" id="admin-vid-code" class="form-input" placeholder="001">
+            </div>
+            <div class="form-group">
+                <label>Tên Video:</label>
+                <input type="text" id="admin-vid-title" class="form-input" placeholder="Hướng dẫn cài đặt VIP">
+            </div>
+            <div class="form-group">
+                <label>Nội dung mô tả:</label>
+                <input type="text" id="admin-vid-desc" class="form-input" placeholder="Mô tả chi tiết...">
+            </div>
+            <div class="form-group">
+                <label>Đường Link Xem Video:</label>
+                <input type="text" id="admin-vid-url" class="form-input" placeholder="https://youtube.com/...">
+            </div>
+            <div class="form-group">
+                <label>Tải ảnh hiển thị (Thumbnail):</label>
+                <input type="file" id="admin-vid-imgfile" accept="image/*" class="form-input">
+            </div>
+            <button class="btn-save" onclick="saveNewVideoTest()">THÊM / CẬP NHẬT VIDEO TEST</button>
+
+            <div style="color: #aaa; font-size: 11px; margin: 10px 0 5px 0;">Danh sách Video Test hiện có:</div>
+            <div id="admin-videos-list-zone"></div>
+        </div>
+    </div>
+
+    <!-- FIREBASE LIBRARIES -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+        var ADMIN_EMAIL = "kiettuna26@gmail.com";
+
+        var baseMods = [
+            { name: "ĐỊNH VỊ FF OB 54", desc: "ALL ĐỊNH VỊ VIP.", links: [{title: "📥 TẢI XUỐNG FILE MOD", url: "https://www.mediafire.com"}] },
+            { name: "FIX LAG FF", desc: "ĐỒ HỌA BRAZIL CHO MÁY LỎ.", links: [{title: "📥 TẢI XUỐNG FILE MOD", url: "https://www.mediafire.com"}] },
+            { name: "MOD SKIN FF", desc: "ALL SKIN FF", links: [{title: "📥 TẢI XUỐNG FILE MOD", url: "https://www.mediafire.com"}] },
+            { name: "FAKE LAG FF", desc: "KT PING , TREY PING.... ALL FAKE LAG", links: [{title: "📥 TẢI XUỐNG FILE MOD", url: "https://www.mediafire.com"}] },
+            { name: "ALL AIMLOCK", desc: "HỖ TRỢ AIM , NHẸ TÂM....", links: [{title: "📥 TẢI XUỐNG FILE MOD", url: "https://www.mediafire.com"}] },
+            { name: "ALL MENU", desc: "KLEL YUMI,VN CHEAT... ALL MENU", links: [{title: "📥 TẢI XUỐNG FILE MOD", url: "https://www.mediafire.com"}] },
+            { name: "VIDEO TEST + HƯỚNG DẪN", desc: "Xem Video Demo & HDSD theo mã số.", isVideoTest: true }
+        ];
+
+        var videoTestItem = { name: "VIDEO TEST + HƯỚNG DẪN", desc: "Xem Video Demo & HDSD theo mã số.", isVideoTest: true };
+
+        var baseVideos = [
+            {
+                code: "001",
+                title: "TEST MOD MENU VIP OB54",
+                desc: "Video trải nghiệm chi tiết bản Mod Menu cực kì mượt mà.",
+                url: "https://www.youtube.com/@maituankiet2k12",
+                img: "https://via.placeholder.com/400x200/200000/ffffff?text=VIDEO+TEST+001"
+            }
+        ];
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyBZdO6MEBogNXMBEGPjEMdpRV4sgfSzP-Y",
+            authDomain: "hackmod-6d933.firebaseapp.com",
+            databaseURL: "https://hackmod-6d933-default-rtdb.firebaseio.com",
+            projectId: "hackmod-6d933",
+            storageBucket: "hackmod-6d933.firebasestorage.app",
+            messagingSenderId: "1039105561920",
+            appId: "1:1039105561920:web:f41bd8b326b45cc37bd6a5"
+        };
+
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        var database = firebase.database();
+        var auth = firebase.auth();
+        var currentModsData = [];
+        var currentVideosData = [];
+        var currentUser = null;
+
+        function loginWithGoogle() {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider).then(function(result) {
+                alert("Đăng nhập thành công: " + result.user.email);
+            }).catch(function(error) {
+                alert("Lỗi đăng nhập: " + error.message);
+            });
+        }
+
+        function logoutGoogle() {
+            auth.signOut().then(function() {
+                alert("Đã đăng xuất!");
+            });
+        }
+
+        auth.onAuthStateChanged(function(user) {
+            currentUser = user;
+            if (user) {
+                document.getElementById('btn-login-google').classList.add('hidden');
+                document.getElementById('btn-logout-google').classList.remove('hidden');
+                document.getElementById('user-email-tag').innerText = user.email;
+
+                if (user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+                    document.getElementById('admin-panel-zone').classList.remove('hidden');
+                    document.getElementById('inp-site-title').value = document.getElementById('site-header-title').innerText;
+                    document.getElementById('inp-site-status').value = document.getElementById('site-header-status').innerText;
+                    renderAdminModList();
+                    renderAdminVideoList();
+                } else {
+                    document.getElementById('admin-panel-zone').classList.add('hidden');
+                }
+            } else {
+                document.getElementById('btn-login-google').classList.remove('hidden');
+                document.getElementById('btn-logout-google').classList.add('hidden');
+                document.getElementById('admin-panel-zone').classList.add('hidden');
+            }
+        });
+
+        function ensureVideoTestExist(list) {
+            if(!list || !Array.isArray(list)) list = [];
+            var cleanList = list.filter(function(item) { return !item.isVideoTest && !item.name.includes("VIDEO TEST"); });
+            cleanList.push(videoTestItem);
+            return cleanList;
+        }
+
+        function refreshMainScreenTexts() {
+            var data = ensureVideoTestExist(currentModsData.length > 0 ? currentModsData : baseMods);
+            var listZone = document.getElementById('mod-list-zone');
+            listZone.innerHTML = "";
+
+            var icons = ['fa-crosshairs', 'fa-bolt', 'fa-shirt', 'fa-signal', 'fa-bullseye', 'fa-bars', 'fa-circle-play'];
+
+            for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                var iconClass = "fa-solid " + icons[i % icons.length];
+                var clickFunc = item.isVideoTest ? "goVideoTestScreen()" : "goDetail(" + i + ")";
+
+                var html = '<div class="mod-item">' +
+                           '  <div class="mod-info">' +
+                           '    <div class="mod-icon"><i class="' + iconClass + '"></i></div>' +
+                           '    <div class="mod-details">' +
+                           '      <div class="mod-name">' + item.name + '</div>' +
+                           '      <div class="mod-desc">' + item.desc + '</div>' +
+                           '    </div>' +
+                           '  </div>' +
+                           '  <button class="btn-view" onclick="' + clickFunc + '">XEM →</button>' +
+                           '</div>';
+                listZone.innerHTML += html;
+            }
+        }
+
+        function goMain() {
+            document.getElementById('screen-detail').classList.add('hidden');
+            document.getElementById('screen-video-test').classList.add('hidden');
+            document.getElementById('screen-main').classList.remove('hidden');
+        }
+
+        function goDetail(idx) {
+            var data = ensureVideoTestExist(currentModsData.length > 0 ? currentModsData : baseMods);
+            var item = data[idx];
+            if(!item) return;
+
+            document.getElementById('screen-main').classList.add('hidden');
+            document.getElementById('screen-detail').classList.remove('hidden');
+
+            document.getElementById('view-title').innerText = item.name;
+            document.getElementById('view-desc').innerText = item.desc;
+
+            var btnZone = document.getElementById('dl-buttons-zone');
+            btnZone.innerHTML = "";
+            if(item.links && item.links.length > 0) {
+                for(var i=0; i<item.links.length; i++) {
+                    btnZone.innerHTML += '<a href="' + item.links[i].url + '" target="_blank" class="btn-dl">' + item.links[i].title + '</a>';
+                }
+            }
+        }
+
+        function goVideoTestScreen() {
+            document.getElementById('screen-main').classList.add('hidden');
+            document.getElementById('screen-video-test').classList.remove('hidden');
+            document.getElementById('video-result-zone').innerHTML = "";
+            document.getElementById('loading-zone').classList.add('hidden');
+        }
+
+        function startSearchVideo() {
+            var code = document.getElementById('inp-search-code').value.trim();
+            if(!code) return alert("Vui lòng nhập mã tìm kiếm!");
+
+            var resultZone = document.getElementById('video-result-zone');
+            var loadingZone = document.getElementById('loading-zone');
+            var progressBar = document.getElementById('progress-bar');
+            var progressText = document.getElementById('progress-text');
+
+            resultZone.innerHTML = "";
+            loadingZone.classList.remove('hidden');
+
+            var steps = [
+                { p: 0, text: "Đang triệu hồi Genjutsu... 0%" },
+                { p: 10, text: "Đang dò tìm mã kịch bản... 10%" },
+                { p: 30, text: "Đang tải dữ liệu Video... 30%" },
+                { p: 70, text: "Đang giải mã kết quả... 70%" },
+                { p: 100, text: "Hoàn tất triệu hồi! 100%" }
+            ];
+
+            var stepIdx = 0;
+            function runStep() {
+                if (stepIdx < steps.length) {
+                    var current = steps[stepIdx];
+                    progressBar.style.width = current.p + "%";
+                    progressText.innerText = current.text;
+                    stepIdx++;
+                    setTimeout(runStep, 450);
+                } else {
+                    setTimeout(function() {
+                        loadingZone.classList.add('hidden');
+                        renderVideoResult(code);
+                    }, 300);
+                }
+            }
+            runStep();
+        }
+
+        function renderVideoResult(code) {
+            var resultZone = document.getElementById('video-result-zone');
+            var vids = currentVideosData.length > 0 ? currentVideosData : baseVideos;
+            
+            var found = vids.find(function(v) { return v.code.toLowerCase() === code.toLowerCase(); });
+
+            if (found) {
+                resultZone.innerHTML = 
+                    '<div class="video-card">' +
+                    '   <div class="video-thumb-container">' +
+                    '       <img src="' + (found.img || 'https://via.placeholder.com/400x200') + '" class="video-thumb">' +
+                    '       <div class="video-code-tag">MÃ: ' + found.code + '</div>' +
+                    '   </div>' +
+                    '   <div class="video-content">' +
+                    '       <div class="video-title">' + found.title + '</div>' +
+                    '       <div class="video-desc">' + found.desc + '</div>' +
+                    '       <a href="' + found.url + '" target="_blank" class="btn-play-video"><i class="fa-solid fa-play"></i> XEM VIDEO TEST</a>' +
+                    '   </div>' +
+                    '</div>';
+            } else {
+                resultZone.innerHTML = '<div style="text-align:center; color:#ff4d4d; font-weight:bold; margin-top:20px;">Không tìm thấy Video nào khớp với mã "' + code + '"!</div>';
+            }
+        }
+
+        /* --- CHỨC NĂNG QUẢN LÝ MOD & LINK TẢI --- */
+        function saveModData() {
+            if(!currentUser || currentUser.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()){
+                return alert("Bạn không có quyền Admin!");
+            }
+
+            var idx = parseInt(document.getElementById('admin-mod-index').value);
+            var name = document.getElementById('admin-mod-name').value.trim();
+            var desc = document.getElementById('admin-mod-desc').value.trim();
+            var btnTitle = document.getElementById('admin-mod-btn-title').value.trim() || "📥 TẢI XUỐNG FILE MOD";
+            var url = document.getElementById('admin-mod-link-url').value.trim();
+
+            if(!name || !url) {
+                return alert("Vui lòng điền đủ Tên bản Mod và Đường Link Tải!");
+            }
+
+            var mods = currentModsData.length > 0 ? currentModsData : baseMods;
+            // Lọc bỏ phần tử Video Test để quản lý dữ liệu sạch
+            mods = mods.filter(function(m) { return !m.isVideoTest && !m.name.includes("VIDEO TEST"); });
+
+            var newMod = {
+                name: name,
+                desc: desc,
+                links: [{ title: btnTitle, url: url }]
+            };
+
+            if(idx >= 0 && idx < mods.length) {
+                mods[idx] = newMod;
+            } else {
+                mods.push(newMod);
+            }
+
+            database.ref('mods').set(mods);
+            alert("Đã lưu bản Mod và Link tải thành công!");
+            resetModForm();
+            renderAdminModList();
+        }
+
+        function editMod(idx) {
+            var mods = currentModsData.length > 0 ? currentModsData : baseMods;
+            mods = mods.filter(function(m) { return !m.isVideoTest && !m.name.includes("VIDEO TEST"); });
+            var item = mods[idx];
+            if(!item) return;
+
+            document.getElementById('admin-mod-index').value = idx;
+            document.getElementById('admin-mod-name').value = item.name;
+            document.getElementById('admin-mod-desc').value = item.desc || "";
+            if(item.links && item.links.length > 0) {
+                document.getElementById('admin-mod-btn-title').value = item.links[0].title || "📥 TẢI XUỐNG FILE MOD";
+                document.getElementById('admin-mod-link-url').value = item.links[0].url || "";
+            }
+            document.getElementById('btn-save-mod').innerText = "CẬP NHẬT BẢN MOD ĐANG CHỌN";
+        }
+
+        function deleteMod(idx) {
+            if(!currentUser || currentUser.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) return;
+            if (confirm("Bạn có chắc chắn muốn xóa bản Mod này?")) {
+                var mods = currentModsData.length > 0 ? currentModsData : baseMods;
+                mods = mods.filter(function(m) { return !m.isVideoTest && !m.name.includes("VIDEO TEST"); });
+                mods.splice(idx, 1);
+                database.ref('mods').set(mods);
+                alert("Đã xóa bản Mod thành công!");
+                renderAdminModList();
+            }
+        }
+
+        function resetModForm() {
+            document.getElementById('admin-mod-index').value = "-1";
+            document.getElementById('admin-mod-name').value = "";
+            document.getElementById('admin-mod-desc').value = "";
+            document.getElementById('admin-mod-btn-title').value = "📥 TẢI XUỐNG FILE MOD";
+            document.getElementById('admin-mod-link-url').value = "";
+            document.getElementById('btn-save-mod').innerText = "THÊM / CẬP NHẬT BẢN MOD";
+        }
+
+        function renderAdminModList() {
+            var zone = document.getElementById('admin-mods-list-zone');
+            if(!zone) return;
+            zone.innerHTML = "";
+            var mods = currentModsData.length > 0 ? currentModsData : baseMods;
+            mods = mods.filter(function(m) { return !m.isVideoTest && !m.name.includes("VIDEO TEST"); });
+
+            mods.forEach(function(m, idx) {
+                zone.innerHTML += 
+                    '<div class="admin-item-row">' +
+                    '   <span><b>' + m.name + '</b></span>' +
+                    '   <div>' +
+                    '       <button class="btn-action-small btn-edit" onclick="editMod(' + idx + ')">✏️ SỬA</button>' +
+                    '       <button class="btn-action-small btn-delete" onclick="deleteMod(' + idx + ')">🗑️ XÓA</button>' +
+                    '   </div>' +
+                    '</div>';
+            });
+        }
+
+        /* --- QUẢN LÝ VIDEO TEST --- */
+        function saveNewVideoTest() {
+            if(!currentUser || currentUser.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()){
+                return alert("Bạn không có quyền Admin!");
+            }
+
+            var code = document.getElementById('admin-vid-code').value.trim();
+            var title = document.getElementById('admin-vid-title').value.trim();
+            var desc = document.getElementById('admin-vid-desc').value.trim();
+            var url = document.getElementById('admin-vid-url').value.trim();
+            var imgFile = document.getElementById('admin-vid-imgfile').files[0];
+
+            if(!code || !title || !url) {
+                return alert("Vui lòng điền đủ Mã, Tên và Đường link Video!");
+            }
+
+            function processSave(imgBase64) {
+                var vids = currentVideosData.length > 0 ? currentVideosData : baseVideos;
+                var existIdx = vids.findIndex(function(v) { return v.code === code; });
+
+                var newVid = {
+                    code: code,
+                    title: title,
+                    desc: desc,
+                    url: url,
+                    img: imgBase64 || (existIdx >= 0 ? vids[existIdx].img : "https://via.placeholder.com/400x200")
+                };
+
+                if (existIdx >= 0) {
+                    vids[existIdx] = newVid;
+                } else {
+                    vids.push(newVid);
+                }
+
+                database.ref('video_tests').set(vids);
+                alert("Đã lưu Video Test thành công!");
+                renderAdminVideoList();
+            }
+
+            if (imgFile) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    processSave(e.target.result);
+                };
+                reader.readAsDataURL(imgFile);
+            } else {
+                processSave(null);
+            }
+        }
+
+        function deleteVideoTest(code) {
+            if(!currentUser || currentUser.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) return;
+            if (confirm("Bạn có chắc chắn muốn xóa Video mã " + code + "?")) {
+                var vids = currentVideosData.length > 0 ? currentVideosData : baseVideos;
+                var filtered = vids.filter(function(v) { return v.code !== code; });
+                database.ref('video_tests').set(filtered);
+                alert("Đã xóa Video thành công!");
+                renderAdminVideoList();
+            }
+        }
+
+        function renderAdminVideoList() {
+            var zone = document.getElementById('admin-videos-list-zone');
+            if(!zone) return;
+            zone.innerHTML = "";
+            var vids = currentVideosData.length > 0 ? currentVideosData : baseVideos;
+
+            vids.forEach(function(v) {
+                zone.innerHTML += 
+                    '<div class="admin-item-row">' +
+                    '   <span><b>[' + v.code + ']</b> ' + v.title + '</span>' +
+                    '   <button class="btn-action-small btn-delete" onclick="deleteVideoTest(\'' + v.code + '\')">🗑️ XÓA</button>' +
+                    '</div>';
+            });
+        }
+
+        function saveSiteInfo() {
+            var t = document.getElementById('inp-site-title').value.trim();
+            var s = document.getElementById('inp-site-status').value.trim();
+            if(!t || !s) return alert("Vui lòng nhập đủ!");
+
+            document.getElementById('site-header-title').innerText = t;
+            document.getElementById('site-header-status').innerText = s;
+            alert("Đã lưu thông tin trang!");
+        }
+
+        window.onload = function() {
+            currentModsData = baseMods;
+            refreshMainScreenTexts();
+
+            database.ref('mods').on('value', function(snapshot) {
+                var data = snapshot.val();
+                currentModsData = (data && data.length > 0) ? data : baseMods;
+                refreshMainScreenTexts();
+                renderAdminModList();
+            });
+
+            database.ref('video_tests').on('value', function(snapshot) {
+                var data = snapshot.val();
+                currentVideosData = (data && data.length > 0) ? data : baseVideos;
+                renderAdminVideoList();
+            });
+        };
+    </script>
+</body>
+</html>
